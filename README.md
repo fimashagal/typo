@@ -44,7 +44,7 @@ Method **isNumber** for detect number in general
 ```javascript
 Typo.isNumber(1); // Must return "true"
 
-Typo.isNumber(1, 1.1); // Must return "true"
+Typo.isNumber(1); // Must return "true"
 
 Typo.isNumber(NaN); // Must return "false"
 
