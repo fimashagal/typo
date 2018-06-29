@@ -23,3 +23,14 @@ Typo.isDef({}); // Must return "true"
 
 Typo.isDef(null); // Must return "false"
 ```
+
+
+### isFn
+
+Method **isFn** for detect function
+
+```javascript
+Typo.isFn(setTimeout); // Must return "true"
+
+Typo.isFn(() => true); // Must return "true"
+```
