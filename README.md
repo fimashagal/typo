@@ -25,8 +25,6 @@ Typo.isDef({}); // Must return "true"
 Typo.isDef(null); // Must return "false"
 ```
 
-
-
 ### isFn
 
 Method **isFn** for detect function
@@ -35,4 +33,18 @@ Method **isFn** for detect function
 Typo.isFn(setTimeout); // Must return "true"
 
 Typo.isFn(() => true); // Must return "true"
+```
+
+### isNumber
+
+Method **isNumber** for detect number in general
+
+```javascript
+Typo.isNumber(1); // Must return "true"
+
+Typo.isNumber(1, 1.1); // Must return "true"
+
+Typo.isNumber(NaN); // Must return "false"
+
+Typo.isNumber(Infinity); // Must return "false"
 ```
