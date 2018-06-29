@@ -16,7 +16,7 @@ It's not all, also you can use another methods
 
 ### isDef
 
-Method **isDef** for detect whether there is an object
+Method **isDef** for detect whether there is an existing object
 
 ```javascript
 Typo.isDef({}); // Must return "true"
