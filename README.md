@@ -13,6 +13,11 @@ Typo.typeOf("Hi there!"); // Must return "string"
 Typo.typeOf(null); // Must return "null"
 ```
 
+### typify
+
+```javascript
+```
+
 ## Specific type detect methods 
 
 ### isDef
