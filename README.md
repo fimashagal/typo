@@ -1,3 +1,3 @@
-# typo
+# Typo
 
-Detect any object type
+Detect any data-type like wizard!
