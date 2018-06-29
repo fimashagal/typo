@@ -1,7 +1,7 @@
 # Typo
 Detect and convert any data-type like wizard 🌟
 
-## Methods
+## Identify type main method 
 
 ### typeOf
 
@@ -12,6 +12,8 @@ Typo.typeOf("Hi there!"); // Must return "string"
 
 Typo.typeOf(null); // Must return "null"
 ```
+
+## Specific type detect methods 
 
 ### isDef
 
