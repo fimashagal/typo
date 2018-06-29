@@ -70,7 +70,7 @@ Method **isFloat** for detect just float number
 ```javascript
 Typo.isFloat(1); // Must return "false"
 
-Typo.isInteger(1.1); // Must return "true"
+Typo.isFloat(1.1); // Must return "true"
 ```
 
 ### isHEX
