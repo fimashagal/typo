@@ -110,3 +110,13 @@ Typo.isEmpty(new Map()); // Must return "true"
 
 Typo.isEmpty({a: 1}); // Must return "false"
 ```
+
+### isChar
+
+Method **isChar** for detect string contain just single character
+
+```javascript
+Typo.isChar("Word"); // Must return "false"
+
+Typo.isChar("@"); // Must return "true"
+```
