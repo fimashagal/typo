@@ -80,3 +80,25 @@ Typo.isHEX("ff00zy"); // Must return "false"
 
 Typo.isHEX("@ff0000"); // Must return "false"
 ```
+
+### isElement
+
+Method **isElement** for detect xml element
+
+```javascript
+Typo.isElement(document.createElement("div")); // Must return "true"
+```
+
+### isEmpty
+
+Method **isEmpty** for detect content of the anytype object
+
+```javascript
+Typo.isEmpty(document.createElement("div")); // Must return "true"
+
+Typo.isEmpty([]); // Must return "true"
+
+Typo.isEmpty(new Map()); // Must return "true"
+
+Typo.isEmpty({a: 1}); // Must return "false"
+```
