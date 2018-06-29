@@ -10,10 +10,10 @@
     };
 
     Typo.prototype.typify = function (object = null) {
-        return {
+        return Object.freeze({
             type: this.typeOf(object),
             object: object
-        };
+        });
     };
 
     Typo.prototype.isDef = function (object = null) {
