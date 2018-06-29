@@ -1,10 +1,7 @@
 # Typo
-
 Detect any data-type like wizard 🌟
----
 
 ## Methods
----
 
 ### typeOf
 
