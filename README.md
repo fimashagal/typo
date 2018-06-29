@@ -9,6 +9,8 @@ In general for detect type use **typeOf** method
 
 ```javascript
 Typo.typeOf("Hi there!"); // Must return "string"
+
+Typo.typeOf(null); // Must return "null"
 ```
 
 ### isDef
