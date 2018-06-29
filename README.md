@@ -48,3 +48,35 @@ Typo.isNumber(NaN); // Must return "false"
 
 Typo.isNumber(Infinity); // Must return "false"
 ```
+
+### isInteger
+
+Method **isInteger** for detect just integer number
+
+```javascript
+Typo.isInteger(1); // Must return "true"
+
+Typo.isInteger(1.1); // Must return "false"
+```
+
+### isFloat
+
+Method **isFloat** for detect just float number
+
+```javascript
+Typo.isFloat(1); // Must return "false"
+
+Typo.isInteger(1.1); // Must return "true"
+```
+
+### isHEX
+
+Method **isHEX** for detect string with heximal number
+
+```javascript
+Typo.isHEX("ff0000"); // Must return "true"
+Typo.isHEX("#ff0000"); // Must return "true"
+Typo.isHEX("0xff0000"); // Must return "true"
+Typo.isHEX("ff00zy"); // Must return "false"
+Typo.isHEX("@ff0000"); // Must return "false"
+```
