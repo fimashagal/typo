@@ -1,5 +1,5 @@
 # Typo
-Detect and convert any data-type like wizard 🌟
+Work with any data-types like wizard 🌟
 
 ## Identify type main method 
 
