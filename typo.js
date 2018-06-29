@@ -53,6 +53,10 @@
         return response;
     };
 
+    Typo.prototype.isChar = function (object = null) {
+        return this.typeOf(object) === "string" && object.length === 1;
+    };
+
     if(window && !window.Typo) window.Typo = new Typo();
 
 })();
