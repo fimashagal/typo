@@ -10,7 +10,7 @@
     };
 
     Typo.prototype.isDef = function (object = null) {
-        return !/null|undefined/.test(this.typeOf(object));
+        return !/null|undefined/.test(this.typeOf(object)) && !isNaN(object);
     };
 
     Typo.prototype.isFn = function (object = null) {
