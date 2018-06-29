@@ -31,7 +31,7 @@
 
     Typo.prototype.isHEX = function(object = null){
         object = object.replace(/[#]|[0x]/g, '');
-        return (parseInt(object, 16).toString(16) === object);
+        return parseInt(object, 16).toString(16) === object;
     };
 
     Typo.prototype.isElement = function(object = null){
