@@ -18,9 +18,13 @@ Typo.typeOf(null); // Must return "null"
 Method **isDef** for detect whether there is an existing object
 
 ```javascript
+Typo.isDef(-1); // Must return "true"
+
 Typo.isDef({}); // Must return "true"
 
 Typo.isDef(null); // Must return "false"
+
+Typo.isDef(NaN); // Must return "false"
 ```
 
 ### isFn
