@@ -29,6 +29,11 @@
         return this.isNumber(object) && !/[.]/.test(`${object}`);
     };
 
+    Typo.prototype.isHEX = function(object){
+        object = object.replace(/[#]|[0x]/g, '');
+        return (parseInt(object, 16).toString(16) === object);
+    };
+
     Typo.prototype.isEmpty = function (object = null) {
         let type = this.typeOf(object),
             response = false;
