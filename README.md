@@ -75,8 +75,12 @@ Method **isHEX** for detect string with heximal number
 
 ```javascript
 Typo.isHEX("ff0000"); // Must return "true"
+
 Typo.isHEX("#ff0000"); // Must return "true"
+
 Typo.isHEX("0xff0000"); // Must return "true"
+
 Typo.isHEX("ff00zy"); // Must return "false"
+
 Typo.isHEX("@ff0000"); // Must return "false"
 ```
