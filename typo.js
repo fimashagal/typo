@@ -64,6 +64,10 @@
         return this.typeOf(object) === "string" && object.length === 1;
     };
 
+    Typo.prototype.isURL = function (object = null) {
+        return this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
+    };
+
     if(window && !window.Typo) window.Typo = new Typo();
 
 })();
