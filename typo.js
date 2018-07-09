@@ -48,15 +48,15 @@
     Typo.prototype.isEmpty = function (object = null) {
         let type = this.typeOf(object),
             response = false;
-        if((type === "string" && object === "")
+        if(((type === "string" && object === "")
             || (/array|htmlcollection|nodelist/.test(type) && !object.length)
             || (/set|map/.test(type) && !object.size)
             || (type === "object" && !Object.keys(object).length)
             || (this.isElement(object) && (!object.children.length && !object.childNodes.length))
-            || !this.isDef(object) ){
+            || (this.isElement(object) && (!object.children.length && !object.childNodes.length)))
+            && !this.isDef(object)){
             response = true;
         }
-
         return response;
     };
 
