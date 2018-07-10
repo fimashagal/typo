@@ -17,7 +17,7 @@ Typo.prototype.typify = function (object = null) {
 };
 
 Typo.prototype.isDef = function (object = null) {
-    return !/null|undefined/.test(this.typeOf(object)) && !isNaN(object);
+    return !/null|undefined/.test(this.typeOf(object)) || (this.typeOf(object) === "number" && !isNaN(object));
 };
 
 Typo.prototype.isFn = function (object = null) {
@@ -62,6 +62,10 @@ Typo.prototype.isEmpty = function (object = null) {
 
 Typo.prototype.isChar = function (object = null) {
     return this.typeOf(object) === "string" && object.length === 1;
+};
+
+Typo.prototype.isURL = function (object = null) {
+    return this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
 };
 
 define(function () {
