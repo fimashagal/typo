@@ -52,7 +52,6 @@ Typo.prototype.isEmpty = function (object = null) {
         || (/array|htmlcollection|nodelist/.test(type) && !object.length)
         || (/set|map/.test(type) && !object.size)
         || (type === "object" && !Object.keys(object).length)
-        || (this.isElement(object) && (!object.children.length && !object.childNodes.length))
         || (this.isElement(object) && (!object.children.length && !object.childNodes.length)))
         && !this.isDef(object)){
         response = true;
@@ -66,6 +65,14 @@ Typo.prototype.isChar = function (object = null) {
 
 Typo.prototype.isURL = function (object = null) {
     return this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
+};
+
+Typo.prototype.isTouch = function(ctx = null){
+    if(this.isDef(window)) ctx = window;
+    if(!this.isDef(ctx)) return false;
+    return 'ontouchstart' in ctx
+            || navigator.MaxTouchPoints > 0
+            || navigator.msMaxTouchPoints > 0;
 };
 
 define(function () {
