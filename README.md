@@ -133,9 +133,20 @@ Typo.isChar("Word"); // false
 Typo.isChar("@"); // true
 ```
 
+### isURL
+
+Method **isURL** for detect http or https links.
+
+```javascript
+Typo.isURL("https://google.com"); // true
+
+Typo.isURL("ht1ps://go0g1e.com"); // false
+```
+
 ### isTouch
 
 Method **isTouch** for detect touch device
+
 ```javascript
 Typo.isTouch();
 ```
