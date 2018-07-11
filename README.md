@@ -5,12 +5,14 @@ Work with any data-types like wizard 🌟
 
 ### typeOf
 
-In general for detect type use **typeOf** method
+In general for detect basic type use **typeOf** method
 
 ```javascript
-Typo.typeOf("Hi there!"); // Must return "string"
+Typo.typeOf("Hi there!"); // "string"
 
-Typo.typeOf(null); // Must return "null"
+Typo.typeOf(100); // "number"
+
+Typo.typeOf(null); // null
 ```
 
 ### typify
@@ -18,9 +20,9 @@ Typo.typeOf(null); // Must return "null"
 **typify** detect type like **typeOf**, but for response use object, not string
 
 ```javascript
-Typo.typify("Hi there!"); // Must return {type: "string", object: "Hi there!"}
+Typo.typify("Hi there!"); // {type "string", object: "Hi there!"}
 
-Typo.typify(null); // Must return {type: "null", object: null}
+Typo.typify(null); // {type "null", object: null}
 ```
 
 ## Specific type detect methods 
@@ -30,13 +32,13 @@ Typo.typify(null); // Must return {type: "null", object: null}
 Method **isDef** for detect whether there is an existing object
 
 ```javascript
-Typo.isDef(-1); // Must return "true"
+Typo.isDef(-1); // true
 
-Typo.isDef({}); // Must return "true"
+Typo.isDef({}); // true
 
-Typo.isDef(null); // Must return "false"
+Typo.isDef(null); // false
 
-Typo.isDef(NaN); // Must return "false"
+Typo.isDef(NaN); // false
 ```
 
 ### isFn
@@ -44,9 +46,9 @@ Typo.isDef(NaN); // Must return "false"
 Method **isFn** for detect function
 
 ```javascript
-Typo.isFn(setTimeout); // Must return "true"
+Typo.isFn(setTimeout); // true
 
-Typo.isFn(() => true); // Must return "true"
+Typo.isFn(() => true); // true
 ```
 
 ### isNumber
@@ -54,13 +56,13 @@ Typo.isFn(() => true); // Must return "true"
 Method **isNumber** for detect number in general
 
 ```javascript
-Typo.isNumber(1); // Must return "true"
+Typo.isNumber(1); // true
 
-Typo.isNumber(1); // Must return "true"
+Typo.isNumber(1); // true
 
-Typo.isNumber(NaN); // Must return "false"
+Typo.isNumber(NaN); // false
 
-Typo.isNumber(Infinity); // Must return "false"
+Typo.isNumber(Infinity); // false
 ```
 
 ### isInteger
@@ -68,9 +70,9 @@ Typo.isNumber(Infinity); // Must return "false"
 Method **isInteger** for detect just integer number
 
 ```javascript
-Typo.isInteger(1); // Must return "true"
+Typo.isInteger(1); // true
 
-Typo.isInteger(1.1); // Must return "false"
+Typo.isInteger(1.1); // false
 ```
 
 ### isFloat
@@ -78,9 +80,9 @@ Typo.isInteger(1.1); // Must return "false"
 Method **isFloat** for detect just float number
 
 ```javascript
-Typo.isFloat(1); // Must return "false"
+Typo.isFloat(1); // false
 
-Typo.isFloat(1.1); // Must return "true"
+Typo.isFloat(1.1); // true
 ```
 
 ### isHEX
@@ -88,15 +90,15 @@ Typo.isFloat(1.1); // Must return "true"
 Method **isHEX** for detect string with heximal number
 
 ```javascript
-Typo.isHEX("ff0000"); // Must return "true"
+Typo.isHEX("ff0000"); // true
 
-Typo.isHEX("#ff0000"); // Must return "true"
+Typo.isHEX("#ff0000"); // true
 
-Typo.isHEX("0xff0000"); // Must return "true"
+Typo.isHEX("0xff0000"); // true
 
-Typo.isHEX("ff00zy"); // Must return "false"
+Typo.isHEX("ff00zy"); // false
 
-Typo.isHEX("@ff0000"); // Must return "false"
+Typo.isHEX("@ff0000"); // false
 ```
 
 ### isElement
@@ -104,7 +106,7 @@ Typo.isHEX("@ff0000"); // Must return "false"
 Method **isElement** for detect xml element
 
 ```javascript
-Typo.isElement(document.createElement("div")); // Must return "true"
+Typo.isElement(document.createElement("div")); // true
 ```
 
 ### isEmpty
@@ -112,13 +114,13 @@ Typo.isElement(document.createElement("div")); // Must return "true"
 Method **isEmpty** for detect content of the anytype object
 
 ```javascript
-Typo.isEmpty(document.createElement("div")); // Must return "true"
+Typo.isEmpty(document.createElement("div")); // true
 
-Typo.isEmpty([]); // Must return "true"
+Typo.isEmpty([]); // true
 
-Typo.isEmpty(new Map()); // Must return "true"
+Typo.isEmpty(new Map()); // true
 
-Typo.isEmpty({a: 1}); // Must return "false"
+Typo.isEmpty({a: 1}); // false
 ```
 
 ### isChar
@@ -126,7 +128,14 @@ Typo.isEmpty({a: 1}); // Must return "false"
 Method **isChar** for detect string contain just single character
 
 ```javascript
-Typo.isChar("Word"); // Must return "false"
+Typo.isChar("Word"); // false
 
-Typo.isChar("@"); // Must return "true"
+Typo.isChar("@"); // true
+```
+
+### isTouch
+
+Method **isTouch** for detect touch device
+```javascript
+Typo.isTouch();
 ```
