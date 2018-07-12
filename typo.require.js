@@ -42,7 +42,7 @@ Typo.prototype.isHEX = function(object = null){
 };
 
 Typo.prototype.isElement = function(object = null){
-    return /^(html)+(.)+(element)$/gm.test(this.typeOf(object));
+    return /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
 };
 
 Typo.prototype.isEmpty = function (object = null) {
