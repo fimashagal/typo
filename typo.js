@@ -4,9 +4,9 @@
 
     Typo.prototype.typeOf = function (object = null) {
         return Object.prototype.toString
-                .call(object)
-                .replace(/^\[object (.+)\]$/, '$1')
-                .toLowerCase();
+            .call(object)
+            .replace(/^\[object (.+)\]$/, '$1')
+            .toLowerCase();
     };
 
     Typo.prototype.typify = function (object = null) {
@@ -48,12 +48,20 @@
     Typo.prototype.isEmpty = function (object = null) {
         let type = this.typeOf(object),
             response = false;
-        if(((type === "string" && object === "")
-            || (/array|htmlcollection|nodelist/.test(type) && !object.length)
-            || (/set|map/.test(type) && !object.size)
-            || (type === "object" && !Object.keys(object).length)
-            || (this.isElement(object) && (!object.children.length && !object.childNodes.length)))
-            && !this.isDef(object)){
+        if(!this.isDef(object)) return response;
+        if(type === "string" && object === ""){
+            response = true;
+        }
+        if(/array|htmlcollection|nodelist/.test(type) && object.length === 0){
+            response = true;
+        }
+        if(/set|map/.test(type) && !object.size){
+            response = true;
+        }
+        if(type === "object" && !Object.keys(object).length){
+            response = true;
+        }
+        if(this.isElement(object) && (!object.children.length && !object.childNodes.length)){
             response = true;
         }
         return response;
@@ -66,11 +74,11 @@
     Typo.prototype.isURL = function (object = null) {
         return this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
     };
-    
+
     Typo.prototype.isTouch = function(ctx = null){
-    if(this.isDef(window)) ctx = window;
-    if(!this.isDef(ctx)) return false;
-    return 'ontouchstart' in ctx
+        if(this.isDef(window)) ctx = window;
+        if(!this.isDef(ctx)) return false;
+        return 'ontouchstart' in ctx
             || navigator.MaxTouchPoints > 0
             || navigator.msMaxTouchPoints > 0;
     };
