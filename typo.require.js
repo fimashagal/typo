@@ -48,7 +48,7 @@ Typo.prototype.isElement = function(object = null){
 Typo.prototype.isEmpty = function (object = null) {
     let type = this.typeOf(object),
         response = false;
-    if(!this.isDef(object)) return response;
+    if(!this.isDef(object)) return true;
     if(type === "string" && object === ""){
         response = true;
     }
@@ -67,8 +67,8 @@ Typo.prototype.isEmpty = function (object = null) {
     return response;
 };
 
-Typo.prototype.isChar = function (object = null) {
-    return this.typeOf(object) === "string" && object.length === 1;
+Typo.prototype.isChar = function (object = null, mode = "") {
+    return  this.typeOf(object) === "string" && object.length === 1;
 };
 
 Typo.prototype.isURL = function (object = null) {
