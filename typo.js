@@ -48,7 +48,7 @@
     Typo.prototype.isEmpty = function (object = null) {
         let type = this.typeOf(object),
             response = false;
-        if(!this.isDef(object)) return response;
+        if(!this.isDef(object)) return true;
         if(type === "string" && object === ""){
             response = true;
         }
