@@ -1,5 +1,5 @@
 ;"use strict";
-(() => {
+(function() {
     function Typo() {}
 
     Typo.prototype.typeOf = function (object = null) {
@@ -16,36 +16,50 @@
         });
     };
 
-    Typo.prototype.isDef = function (object = null) {
-        return !/null|undefined/.test(this.typeOf(object)) || (this.typeOf(object) === "number" && !isNaN(object));
+    Typo.prototype.isDef = function (object = null, done = null, reject = null, callback = null) {
+        let response = !/null|undefined/.test(this.typeOf(object)) || (this.typeOf(object) === "number" && !isNaN(object));
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isFn = function (object = null) {
-        return /function/.test(this.typeOf(object));
+    Typo.prototype.isFn = function (object = null, done = null, reject = null, callback = null) {
+        let response = /function/.test(this.typeOf(object));
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isNumber = function(object = null){
-        return this.typeOf(object) === "number" && !isNaN(object) && isFinite(object);
+    Typo.prototype.isNumber = function(object = null, done = null, reject = null, callback = null){
+        let response = this.typeOf(object) === "number" && !isNaN(object) && isFinite(object);
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isFloat = function(object = null){
-        return this.isNumber(object) && /[.]/.test(`${object}`);
+    Typo.prototype.isFloat = function(object = null, done = null, reject = null, callback = null){
+        let response = this.isNumber(object) && /[.]/.test(`${object}`);
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isInteger = function(object = null){
-        return this.isNumber(object) && !/[.]/.test(`${object}`);
+    Typo.prototype.isInteger = function(object = null, done = null, reject = null, callback = null){
+        let response = this.isNumber(object) && !/[.]/.test(`${object}`);
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isHEX = function(object = null){
+    Typo.prototype.isHEX = function(object = null, done = null, reject = null, callback = null){
         object = object.replace(/[#]|[0x]/g, '');
-        return parseInt(object, 16).toString(16) === object;
+        let response = parseInt(object, 16).toString(16) === object;
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isElement = function(object = null){
-        return /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
+    Typo.prototype.isElement = function(object = null, done = null, reject = null, callback = null){
+        let response = /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isEmpty = function (object = null) {
+    Typo.prototype.isEmpty = function (object = null, done = null, reject = null, callback = null) {
         let type = this.typeOf(object),
             response = false;
         if(!this.isDef(object)) return true;
@@ -64,23 +78,33 @@
         if(this.isElement(object) && (!object.children.length && !object.childNodes.length)){
             response = true;
         }
+        this._eventually(response, done, reject, callback);
         return response;
     };
 
-    Typo.prototype.isChar = function (object = null) {
-        return this.typeOf(object) === "string" && object.length === 1;
+    Typo.prototype.isChar = function (object = null, done = null, reject = null, callback = null) {
+        let response = this.typeOf(object) === "string" && object.length === 1;
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isURL = function (object = null) {
-        return this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
+    Typo.prototype.isURL = function (object = null, done = null, reject = null, callback = null) {
+        let response = this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
+        this._eventually(response, done, reject, callback);
+        return response;
     };
 
-    Typo.prototype.isTouch = function(ctx = null){
+    Typo.prototype.isTouch = function(ctx = null, done = null, reject = null, callback = null){
         if(this.isDef(window)) ctx = window;
         if(!this.isDef(ctx)) return false;
-        return 'ontouchstart' in ctx
-            || navigator.MaxTouchPoints > 0
-            || navigator.msMaxTouchPoints > 0;
+        let response = 'ontouchstart' in ctx || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+        this._eventually(response, done, reject, callback);
+        return response;
+    };
+
+    Typo.prototype._eventually = function (condition, fnA, fnB, fnC) {
+        (condition === true) ? ((typeof fnA === "function") && fnA()) : ((typeof fnB === "function") && fnB());
+        (typeof fnC === "function") && fnC();
     };
 
     if(window && !window.Typo) window.Typo = new Typo();
