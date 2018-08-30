@@ -166,7 +166,7 @@ function onFalse(){
 }
 
 function onFinal(response){
-    // some code and response object...
+    // some code and response variable with result...
 }
 
 Typo.isURL("https://google.com", onTrue, onFalse, onFinal);
