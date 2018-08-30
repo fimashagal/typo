@@ -150,3 +150,24 @@ Method **isTouch** for detect touch device
 ```javascript
 Typo.isTouch();
 ```
+
+## Callbacks
+
+Each specific type detect method has three types of callback: call that works if the condition is true, call that works if the condition is false
+and call that works anyway
+
+```javascript
+function onTrue(){
+    // some code...
+}
+
+function onFalse(){
+    // some code...
+}
+
+function onFinal(response){
+    // some code and response object...
+}
+
+Typo.isURL("https://google.com", onTrue, onFalse, onFinal); // true
+```
