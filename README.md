@@ -169,5 +169,5 @@ function onFinal(response){
     // some code and response object...
 }
 
-Typo.isURL("https://google.com", onTrue, onFalse, onFinal); // true
+Typo.isURL("https://google.com", onTrue, onFalse, onFinal);
 ```
