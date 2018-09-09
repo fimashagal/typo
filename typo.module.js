@@ -110,7 +110,7 @@ Typo.prototype.isTypeChain = function(collection = [], typeChain = [], fnTrue = 
 
     if(typeOfCollection === "set") collection = [...collection];
 
-    if(collection.length !== typeChain.length || /number|string|boolean/.test(typeOfCollection)) {
+    if(collection.length !== typeChain.length || /number|string|boolean|null|undefined/.test(typeOfCollection)) {
         response = false;
     } else {
         for(let i = 0; i < typeChain.length; i++){
