@@ -102,6 +102,30 @@ Typo.prototype.isTouch = function(ctx = null, fnTrue = null, fnFalse = null, fnA
     return response;
 };
 
+Typo.prototype.isTypeChain = function(collection = [], typeChain = [], fnTrue = null, fnFalse = null, fnAfter = null){
+    let response = true;
+    let typeOfCollection = this.typeOf(collection);
+
+    if(typeOfCollection === "object") collection = Object.values(collection);
+
+    if(typeOfCollection === "set") collection = [...collection];
+
+    if(collection.length !== typeChain.length || /number|string|boolean/.test(typeOfCollection)) {
+        response = false;
+    } else {
+        for(let i = 0; i < typeChain.length; i++){
+            let chain = typeChain[i];
+            (chain === "undefined") && (chain = "null");
+            if(this.typeOf(collection[i]) !== chain){
+                response = false;
+                break;
+            }
+        }
+    }
+    this._eventually(response, fnTrue, fnFalse, fnAfter);
+    return response;
+};
+
 Typo.prototype._eventually = function (condition, fnA, fnB, fnC) {
     (condition === true) ? ((typeof fnA === "function") && fnA()) : ((typeof fnB === "function") && fnB());
     (typeof fnC === "function") && fnC(condition);

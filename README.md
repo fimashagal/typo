@@ -151,6 +151,16 @@ Method **isTouch** for detect touch device
 Typo.isTouch();
 ```
 
+### isTypeChain
+
+Method **isTypeChain** for compare each array item with item of type-list 
+
+```javascript
+Typo.isTypeChain([null, 5], ['null', 'number']); // true
+
+Typo.isTypeChain(["*", false], ['null', 'number']); // false
+```
+
 ## Callbacks
 
 Each specific type detect method has three types of callback: call that works if the condition is true, call that works if the condition is false
