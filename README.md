@@ -107,6 +107,8 @@ Method **isElement** for detect xml element
 
 ```javascript
 Typo.isElement(document.createElement("div")); // true
+
+Typo.isElement("#someId"); // true
 ```
 
 ### isEmpty
@@ -141,6 +143,16 @@ Method **isURL** for detect http or https links.
 Typo.isURL("https://google.com"); // true
 
 Typo.isURL("ht1ps://go0g1e.com"); // false
+```
+
+### isURI
+
+Method **isURI** for detect http or https links contains media.
+
+```javascript
+Typo.isURI("https://google.com"); // false
+
+Typo.isURI("https://google.com/image.jpg"); // true
 ```
 
 ### isTouch

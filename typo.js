@@ -54,9 +54,13 @@
     };
 
     Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
+        if(typeof object === "string") {
+            object = document.querySelector(object);
+        }
         let response = /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
         this._eventually(response, fnTrue, fnFalse, fnAfter);
         return response;
+
     };
 
     Typo.prototype.isEmpty = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
@@ -90,6 +94,12 @@
 
     Typo.prototype.isURL = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
         let response = this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
+        this._eventually(response, fnTrue, fnFalse, fnAfter);
+        return response;
+    };
+
+    Typo.prototype.isURI = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+        let response = this.isURL(object) && /([.]+(avi|mp4|ogg|wav|mp3|svg|jpg|jpeg|png|webm|webp)$)/.test(object);
         this._eventually(response, fnTrue, fnFalse, fnAfter);
         return response;
     };
