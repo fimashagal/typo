@@ -86,6 +86,12 @@ Typo.prototype.isEmpty = function (object = null, fnTrue = null, fnFalse = null,
     return response;
 };
 
+Typo.prototype.isntEmpty = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+    let response = !this.isEmpty(object);
+    this._eventually(response, fnTrue, fnFalse, fnAfter);
+    return response;
+};
+
 Typo.prototype.isChar = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
     let response = this.typeOf(object) === "string" && object.length === 1;
     this._eventually(response, fnTrue, fnFalse, fnAfter);

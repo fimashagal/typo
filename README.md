@@ -113,7 +113,7 @@ Typo.isElement("#someId"); // true
 
 ### isEmpty
 
-Method **isEmpty** for detect content of the anytype object
+Method **isEmpty** for detect lack of content in the anytype object
 
 ```javascript
 Typo.isEmpty(document.createElement("div")); // true
@@ -123,6 +123,20 @@ Typo.isEmpty([]); // true
 Typo.isEmpty(new Map()); // true
 
 Typo.isEmpty({a: 1}); // false
+```
+
+### isntEmpty
+
+Method **isntEmpty** for detect availability of content in the anytype object
+
+```javascript
+Typo.isntEmpty(document.createElement("div")); // false
+
+Typo.isntEmpty([]); // false
+
+Typo.isntEmpty(new Map()); // false
+
+Typo.isntEmpty({a: 1}); // true
 ```
 
 ### isChar
