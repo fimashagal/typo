@@ -111,7 +111,7 @@
     };
 
     Typo.prototype.isURI = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
-        let response = this.isURL(object) && /([.]+(avi|mp4|ogg|wav|mp3|svg|jpg|jpeg|png|webm|webp)$)/.test(object);
+        let response = this.isURL(object) && /([.]+(avi|mp4|ogg|wav|mp3|svg|jpg|jpeg|png|gif|webm|webp|json)$)/.test(object);
         this._eventually(response, fnTrue, fnFalse, fnAfter);
         return response;
     };
