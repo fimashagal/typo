@@ -54,12 +54,18 @@
     };
 
     Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
-        if(typeof object === "string") {
-            object = document.querySelector(object);
+        let response;
+        try {
+            if(typeof object === "string") object = document.querySelector(object);
+            response = /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
+            this._eventually(response, fnTrue, fnFalse, fnAfter);
+            return response;
+        } catch(err){
+            console.warn(err);
+            response = false;
+            this._eventually(response, fnTrue, fnFalse, fnAfter);
+            return response;
         }
-        let response = /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
-        this._eventually(response, fnTrue, fnFalse, fnAfter);
-        return response;
 
     };
 
