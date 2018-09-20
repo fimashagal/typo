@@ -22,6 +22,18 @@ Typo.prototype.isDef = function (object = null, fnTrue = null, fnFalse = null, f
     return response;
 };
 
+Typo.prototype.isntDef = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
+    let response = !this.isDef(object);
+    this._eventually(response, fnTrue, fnFalse, fnAfter);
+    return response;
+};
+
+Typo.prototype.isString = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
+    let response = typeof object === "string" || object instanceof String;
+    this._eventually(response, fnTrue, fnFalse, fnAfter);
+    return response;
+};
+
 Typo.prototype.isFn = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
     let response = /function/.test(this.typeOf(object));
     this._eventually(response, fnTrue, fnFalse, fnAfter);
@@ -118,8 +130,19 @@ Typo.prototype.isURI = function (object = null, fnTrue = null, fnFalse = null, f
 
 Typo.prototype.isTouch = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
     if(this.isDef(window)) ctx = window;
-    if(!this.isDef(ctx)) return false;
+    if(this.isntDef(ctx)) return false;
     let response = 'ontouchstart' in ctx || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    this._eventually(response, fnTrue, fnFalse, fnAfter);
+    return response;
+};
+
+Typo.prototype.isFacebookBrowser = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
+    if(this.isDef(navigator)) ctx = navigator;
+    if(this.isntDef(ctx)) return false;
+    let userAgent = navigator.userAgent
+        || navigator.vendor
+        || window.opera,
+        response = /FBAN|FBAV/.test(userAgent);
     this._eventually(response, fnTrue, fnFalse, fnAfter);
     return response;
 };

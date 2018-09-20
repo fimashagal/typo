@@ -41,6 +41,16 @@ Typo.isDef(null); // false
 Typo.isDef(NaN); // false
 ```
 
+### isntDef
+
+Method **isntDef** for detect whether there is an nonexistent object
+
+```javascript
+Typo.isntDef(null); // true
+
+Typo.isntDef({}); // false
+```
+
 ### isFn
 
 Method **isFn** for detect function
@@ -49,6 +59,16 @@ Method **isFn** for detect function
 Typo.isFn(setTimeout); // true
 
 Typo.isFn(() => true); // true
+```
+
+### isString
+
+Method **isString** for detect string
+
+```javascript
+Typo.isString("Hello, World!"); // true
+
+Typo.isString(0); // false
 ```
 
 ### isNumber
@@ -175,6 +195,14 @@ Method **isTouch** for detect touch device
 
 ```javascript
 Typo.isTouch();
+```
+
+### isFacebookBrowser
+
+Method **isFacebookBrowser** for detect Facebook in-app browser
+
+```javascript
+Typo.isFacebookBrowser();
 ```
 
 ### isTypeChain
