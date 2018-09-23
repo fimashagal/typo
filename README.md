@@ -20,9 +20,9 @@ Typo.typeOf(null); // null
 **typify** detect type like **typeOf**, but for response use object, not string
 
 ```javascript
-Typo.typify("Hi there!"); // {type "string", object: "Hi there!"}
+Typo.typify("Hi there!"); // {type: "string", object: "Hi there!"}
 
-Typo.typify(null); // {type "null", object: null}
+Typo.typify(null); // {type: "null", object: null}
 ```
 
 ## Specific type detect methods 

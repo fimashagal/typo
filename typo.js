@@ -4,9 +4,9 @@
 
     Typo.prototype.typeOf = function (object = null) {
         return Object.prototype.toString
-            .call(object)
-            .replace(/^\[object (.+)\]$/, '$1')
-            .toLowerCase();
+                .call(object)
+                .replace(/^\[object (.+)\]$/, '$1')
+                .toLowerCase();
     };
 
     Typo.prototype.typify = function (object = null) {
