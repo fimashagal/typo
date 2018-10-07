@@ -61,7 +61,7 @@ Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null
     let condition;
     try {
         if(typeof object === "string") object = document.querySelector(object);
-        condition = /^(html)+(.)+(element)$|htmlelement/gm.test(this.typeOf(object));
+        condition = /^(html)+(.)+(element)$|htmlelement|^(svg)+(.)+(element)$/gm.test(this.typeOf(object));
         return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
     } catch(err){
         condition = false;
