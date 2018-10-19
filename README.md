@@ -241,7 +241,7 @@ Typo.isURL("https://google.com", onTrue, onFalse, onFinal);
 
 Most of the existing methods have analogues for checking the type of a set of elements without callbacks
 
-### isDefss
+### isDefs
 
 ```javascript
 Typo.isDefs(-1, 2); // true
