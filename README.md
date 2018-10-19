@@ -235,3 +235,105 @@ function onFinal(response){
 
 Typo.isURL("https://google.com", onTrue, onFalse, onFinal);
 ```
+
+
+## Multiple type checking
+
+Most of the existing methods have analogues for checking the type of a set of elements without callbacks
+
+### isDefss
+
+```javascript
+Typo.isDefs(-1, 2); // true
+
+Typo.isDefs(null, 2); // false
+```
+
+### isFns
+
+```javascript
+Typo.isFns(() => {}, () => {}); // true
+
+Typo.isFns(() => {}, 2); // false
+```
+
+### isStrings
+
+```javascript
+Typo.isStrings("alpha", "beta"); // true
+
+Typo.isStrings("gamma", 2); // false
+```
+
+### isNumbers
+
+```javascript
+Typo.isNumbers(0, 1.2); // true
+
+Typo.isNumbers("gamma", 2); // false
+```
+
+### isIntegers
+
+```javascript
+Typo.isIntegers(0, 1); // true
+
+Typo.isIntegers(0.1, 2); // false
+```
+
+### isFloats
+
+```javascript
+Typo.isFloats(0.1, 0.2); // true
+
+Typo.isIntegers(1, .2); // false
+```
+
+### isHEXs
+
+```javascript
+Typo.isHEXs("ff0000", "#ff0000"); // true
+
+Typo.isHEXs("", "@ff0000"); // false
+```
+
+### isElements
+
+```javascript
+Typo.isElements("body", document.createElement('div')); // true
+
+Typo.isElements(null, "body"); // false
+```
+
+### isEmpties
+
+```javascript
+Typo.isEmpties([], {}); // true
+
+Typo.isEmpties([1, 2], {}); // false
+```
+
+### isChars
+
+```javascript
+Typo.isChars("2", "3"); // true
+
+Typo.isChars("a", "b2"); // false
+```
+
+### isURLs
+
+```javascript
+Typo.isURLs("https://google.com", "https://gmail.com"); // true
+
+Typo.isURLs(null, "htt"); // false
+```
+
+
+### isURIs
+
+```javascript
+Typo.isURIs("https://google.com/some.json", "https://gmail.com/some.jpg"); // true
+
+Typo.isURIs(null, "htx"); // false
+```

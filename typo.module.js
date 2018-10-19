@@ -21,6 +21,10 @@ Typo.prototype.isDef = function (object = null, fnTrue = null, fnFalse = null, f
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isDefs = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isDef(object)) : false;
+};
+
 Typo.prototype.isntDef = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition = !this.isDef(object);
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
@@ -31,9 +35,17 @@ Typo.prototype.isFn = function (object = null, fnTrue = null, fnFalse = null, fn
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isFns = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isFn(object)) : false;
+};
+
 Typo.prototype.isString = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition = typeof object === "string" || object instanceof String;
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.isStrings = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isString(object)) : false;
 };
 
 Typo.prototype.isNumber = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
@@ -41,9 +53,17 @@ Typo.prototype.isNumber = function(object = null, fnTrue = null, fnFalse = null,
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isNumbers = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isNumber(object)) : false;
+};
+
 Typo.prototype.isFloat = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition = this.isNumber(object) && /[.]/.test(`${object}`);
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.isFloats = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isFloat(object)) : false;
 };
 
 Typo.prototype.isInteger = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
@@ -51,10 +71,18 @@ Typo.prototype.isInteger = function(object = null, fnTrue = null, fnFalse = null
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isIntegers = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isInteger(object)) : false;
+};
+
 Typo.prototype.isHEX = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     object = object.replace(/[#]|[0x]/g, '');
     let condition = parseInt(object, 16).toString(16) === object;
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.isHEXs = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isHEX(object)) : false;
 };
 
 Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
@@ -67,6 +95,10 @@ Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null
         condition = false;
         return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
     }
+};
+
+Typo.prototype.isElements = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isElement(object)) : false;
 };
 
 Typo.prototype.isEmpty = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
@@ -91,6 +123,10 @@ Typo.prototype.isEmpty = function (object = null, fnTrue = null, fnFalse = null,
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isEmpties = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isEmpty(object)) : false;
+};
+
 Typo.prototype.isntEmpty = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
     let condition = !this.isEmpty(object);
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
@@ -101,14 +137,26 @@ Typo.prototype.isChar = function (object = null, fnTrue = null, fnFalse = null, 
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isChars = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isChar(object)) : false;
+};
+
 Typo.prototype.isURL = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
     let condition = this.typeOf(object) === "string" && /(https?:\/\/[^\s]+)/g.test(object);
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isURLs = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isURL(object)) : false;
+};
+
 Typo.prototype.isURI = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
     let condition = this.isURL(object) && /([.]+(avi|mp4|ogg|wav|mp3|svg|jpg|jpeg|png|gif|webm|webp|json)$)/.test(object);
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.isURIs = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isURI(object)) : false;
 };
 
 Typo.prototype.isTouch = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
@@ -149,6 +197,15 @@ Typo.prototype.isTypeChain = function(collection = [], typeChain = [], fnTrue = 
         }
     }
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype._isMarriage = function (array, fnChecker){
+    for(let item of array){
+        if(!fnChecker(item)){
+            return false;
+        }
+    }
+    return true;
 };
 
 Typo.prototype._pipe = function (options = {}) {
