@@ -61,6 +61,16 @@ Typo.isFn(setTimeout); // true
 Typo.isFn(() => true); // true
 ```
 
+### isntFn
+
+Method **isntFn** for detect not a function
+
+```javascript
+Typo.isntFn(setTimeout); // false
+
+Typo.isntFn(null); // true
+```
+
 ### isString
 
 Method **isString** for detect string
@@ -129,6 +139,14 @@ Method **isElement** for detect xml element
 Typo.isElement(document.createElement("div")); // true
 
 Typo.isElement("#someId"); // true
+```
+
+### isntElement
+
+Method **isntElement** for detect not a element
+
+```javascript
+Typo.isntElement('x-tag'); // true
 ```
 
 ### isEmpty

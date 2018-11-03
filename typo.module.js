@@ -39,6 +39,11 @@ Typo.prototype.isFns = function (...objects) {
     return objects.length ? this._isMarriage(objects, object => this.isFn(object)) : false;
 };
 
+Typo.prototype.isntFn = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+    let condition = !this.isFn(object);
+    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
 Typo.prototype.isString = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition = typeof object === "string" || object instanceof String;
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
@@ -99,6 +104,11 @@ Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null
 
 Typo.prototype.isElements = function (...objects) {
     return objects.length ? this._isMarriage(objects, object => this.isElement(object)) : false;
+};
+
+Typo.prototype.isntElement = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+    let condition = !this.isElement(object);
+    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
 Typo.prototype.isEmpty = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
