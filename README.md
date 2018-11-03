@@ -179,16 +179,6 @@ Typo.isURL("https://google.com"); // true
 Typo.isURL("ht1ps://go0g1e.com"); // false
 ```
 
-### isURI
-
-Method **isURI** for detect http or https links contains media.
-
-```javascript
-Typo.isURI("https://google.com"); // false
-
-Typo.isURI("https://google.com/image.jpg"); // true
-```
-
 ### isTouch
 
 Method **isTouch** for detect touch device
@@ -327,13 +317,4 @@ Typo.isChars("a", "b2"); // false
 Typo.isURLs("https://google.com", "https://gmail.com"); // true
 
 Typo.isURLs(null, "htt"); // false
-```
-
-
-### isURIs
-
-```javascript
-Typo.isURIs("https://google.com/some.json", "https://gmail.com/some.jpg"); // true
-
-Typo.isURIs(null, "htx"); // false
 ```

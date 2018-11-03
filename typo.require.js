@@ -150,15 +150,6 @@ Typo.prototype.isURLs = function (...objects) {
     return objects.length ? this._isMarriage(objects, object => this.isURL(object)) : false;
 };
 
-Typo.prototype.isURI = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
-    let condition = this.isURL(object) && /([.]+(avi|mp4|ogg|wav|mp3|svg|jpg|jpeg|png|gif|webm|webp|json)$)/.test(object);
-    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
-};
-
-Typo.prototype.isURIs = function (...objects) {
-    return objects.length ? this._isMarriage(objects, object => this.isURI(object)) : false;
-};
-
 Typo.prototype.isTouch = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
     if(this.isDef(window)) ctx = window;
     if(this.isntDef(ctx)) return false;
