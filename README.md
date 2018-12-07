@@ -326,3 +326,31 @@ Typo.isURLs("https://google.com", "https://gmail.com"); // true
 
 Typo.isURLs(null, "htt"); // false
 ```
+
+
+## Custom types
+
+### addType
+
+Set name for register your own type and function-checker
+
+```javascript
+Typo.addType("single", value => value.length === 1);
+```
+
+### hasType
+
+Compare object type with your custom type
+
+```javascript
+Typo.hasType([1], "single"); // true
+Typo.hasType(null, "single"); // false
+```
+
+### removeType
+
+Use name for delete your own type
+
+```javascript
+Typo.removeType("single");
+```
