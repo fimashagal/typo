@@ -1,5 +1,7 @@
 ;"use strict";
 
+const customTypes = {};
+
 function Typo() {}
 
 Typo.prototype.typeOf = function (object = null) {
@@ -191,6 +193,32 @@ Typo.prototype.isTypeChain = function(collection = [], typeChain = [], fnTrue = 
         }
     }
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.addType = function (typeName, fnChecker) {
+    if((this.isString(typeName) && this.isntEmpty(typeName))
+        && !customTypes.hasOwnProperty(typeName)
+        && (this.isFn(fnChecker))){
+        customTypes[typeName] = fnChecker;
+    }
+};
+
+Typo.prototype.hasType = function (object, typeName) {
+    if((!this.isString(typeName) || this.isEmpty(typeName))
+        || !customTypes.hasOwnProperty(typeName)) return false;
+    try {
+        return customTypes[typeName](object);
+    } catch (err) {
+        return false;
+    }
+
+};
+
+Typo.prototype.removeType = function (typeName) {
+    if((this.isString(typeName) && this.isntEmpty(typeName)) &&
+        customTypes.hasOwnProperty(typeName)){
+        delete customTypes[typeName];
+    }
 };
 
 Typo.prototype._isMarriage = function (array, fnChecker){

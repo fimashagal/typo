@@ -1,5 +1,7 @@
 ;"use strict";
 (function() {
+    const customTypes = {};
+
     function Typo() {}
 
     Typo.prototype.typeOf = function (object = null) {
@@ -193,6 +195,32 @@
         return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
     };
 
+    Typo.prototype.addType = function (typeName, fnChecker) {
+        if((this.isString(typeName) && this.isntEmpty(typeName))
+            && !customTypes.hasOwnProperty(typeName)
+            && (this.isFn(fnChecker))){
+            customTypes[typeName] = fnChecker;
+        }
+    };
+
+    Typo.prototype.hasType = function (object, typeName) {
+        if((!this.isString(typeName) || this.isEmpty(typeName))
+            || !customTypes.hasOwnProperty(typeName)) return false;
+        try {
+            return customTypes[typeName](object);
+        } catch (err) {
+            return false;
+        }
+
+    };
+
+    Typo.prototype.removeType = function (typeName) {
+        if((this.isString(typeName) && this.isntEmpty(typeName)) &&
+            customTypes.hasOwnProperty(typeName)){
+            delete customTypes[typeName];
+        }
+    };
+
     Typo.prototype._isMarriage = function (array, fnChecker){
         for(let item of array){
             if(!fnChecker(item)){
@@ -212,6 +240,8 @@
         (condition === true) ? ((typeof fnA === "function") && fnA()) : ((typeof fnB === "function") && fnB());
         (typeof fnC === "function") && fnC(condition);
     };
+
+
 
     if(window && !window.Typo) window.Typo = new Typo();
 
