@@ -9,13 +9,6 @@
                 .toLowerCase();
     };
 
-    Typo.prototype.typify = function (object = null) {
-        return Object.freeze({
-            type: this.typeOf(object),
-            object: object
-        });
-    };
-
     Typo.prototype.isDef = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
         let condition = !/null|undefined/.test(this.typeOf(object)) || (this.typeOf(object) === "number" && !isNaN(object));
         return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
