@@ -357,7 +357,7 @@ Typo.removeType("single");
 
 ### Remember!
 
-'Custom Type' method family not work with native types!
+Family of custom type methods not work with native types!
 
 Use 'typeOf' if wan't get native javascript type
 
