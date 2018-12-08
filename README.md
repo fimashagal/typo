@@ -361,4 +361,4 @@ Family of custom type methods not work with native types, just with user custom 
 
 Use 'typeOf' if wan't get native javascript type
 
-Use 'hasType' just if wan't check your own custom type
+Use 'hasXType' just if wan't check your own custom type
