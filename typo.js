@@ -195,7 +195,7 @@
         return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
     };
 
-    Typo.prototype.addType = function (typeName, fnChecker) {
+    Typo.prototype.addXType = function (typeName, fnChecker) {
         if((this.isString(typeName) && this.isntEmpty(typeName))
             && !customTypes.hasOwnProperty(typeName)
             && (this.isFn(fnChecker))){
@@ -203,7 +203,7 @@
         }
     };
 
-    Typo.prototype.hasType = function (object, typeName) {
+    Typo.prototype.hasXType = function (object, typeName) {
         if((!this.isString(typeName) || this.isEmpty(typeName))
             || !customTypes.hasOwnProperty(typeName)) return false;
         try {
@@ -214,7 +214,7 @@
 
     };
 
-    Typo.prototype.removeType = function (typeName) {
+    Typo.prototype.removeXType = function (typeName) {
         if((this.isString(typeName) && this.isntEmpty(typeName)) &&
             customTypes.hasOwnProperty(typeName)){
             delete customTypes[typeName];

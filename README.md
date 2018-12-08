@@ -330,34 +330,34 @@ Typo.isURLs(null, "htt"); // false
 
 ## Custom types
 
-### addType
+### addXType
 
-Set name for register your own type and function-checker
+Set name for register your own extra type and function-checker
 
 ```javascript
-Typo.addType("single", value => value.length === 1);
+Typo.addXType("single", value => value.length === 1);
 ```
 
-### hasType
+### hasXType
 
-Compare object type with your custom type
+Compare object type with your custom extra type
 
 ```javascript
-Typo.hasType([1], "single"); // true
-Typo.hasType(null, "single"); // false
+Typo.hasXType([1], "single"); // true
+Typo.hasXType(null, "single"); // false
 ```
 
-### removeType
+### removeXType
 
-Use name for delete your own type
+Use name for delete your custom extra type
 
 ```javascript
-Typo.removeType("single");
+Typo.removeXType("single");
 ```
 
 ### Remember!
 
-Family of custom type methods not work with native types!
+Family of custom type methods not work with native types, just with user custom extra types!
 
 Use 'typeOf' if wan't get native javascript type
 
