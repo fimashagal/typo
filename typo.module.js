@@ -207,7 +207,7 @@ Typo.prototype.hasType = function (object, typeName) {
     if((!this.isString(typeName) || this.isEmpty(typeName))
         || !customTypes.hasOwnProperty(typeName)) return false;
     try {
-        return customTypes[typeName](object);
+        return Boolean(customTypes[typeName](object));
     } catch (err) {
         return false;
     }
