@@ -61,6 +61,26 @@ Typo.isntFn(setTimeout); // false
 Typo.isntFn(null); // true
 ```
 
+### isObject
+
+Method **isObject** for detect object (not null or object-like)
+
+```javascript
+Typo.isObject({}); // true
+
+Typo.isObject(() => true); // false
+```
+
+### isntObject
+
+Method **isObject** for detect not a object
+
+```javascript
+Typo.isntObject({}); // false
+
+Typo.isntObject(() => true); // true
+```
+
 ### isString
 
 Method **isString** for detect string
@@ -255,6 +275,14 @@ Typo.isFns(() => {}, () => {}); // true
 Typo.isFns(() => {}, 2); // false
 ```
 
+### isObjects
+
+```javascript
+Typo.isObjects({}, {}); // true
+
+Typo.isObjects({}, []); // false
+```
+
 ### isStrings
 
 ```javascript
@@ -362,3 +390,32 @@ Family of custom type methods not work with native types, just with user custom 
 Use 'typeOf' if wan't get native javascript type
 
 Use 'hasXType' just if wan't check your own custom type
+
+
+## Check object with type-struct
+
+### hasStruct
+
+Compare every propertie of object with type struct
+
+```javascript
+Typo.hasStruct({
+    age: 100,
+    name: "",
+    callback(){
+
+    }
+}, {
+    age: "number",
+    name: "string",
+    callback: "function"
+}); // true
+
+Typo.hasStruct({
+    age: "text"
+}, {
+    age: "number",
+    name: "string",
+    callback: "function"
+}); // false
+```

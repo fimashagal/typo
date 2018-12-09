@@ -39,6 +39,20 @@ Typo.prototype.isntFn = function (object = null, fnTrue = null, fnFalse = null, 
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
+Typo.prototype.isObject = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+    let condition = /object/.test(this.typeOf(object));
+    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
+Typo.prototype.isObjects = function (...objects) {
+    return objects.length ? this._isMarriage(objects, object => this.isObject(object)) : false;
+};
+
+Typo.prototype.isntObject = function (object = null, fnTrue = null, fnFalse = null, fnAfter = null) {
+    let condition = !this.isObject(object);
+    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
+};
+
 Typo.prototype.isString = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition = typeof object === "string" || object instanceof String;
     return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
@@ -219,6 +233,26 @@ Typo.prototype.removeXType = function (typeName) {
         customTypes.hasOwnProperty(typeName)){
         delete customTypes[typeName];
     }
+};
+
+Typo.prototype.hasStruct = function (object, struct) {
+    let response = true;
+    if(this.isDefs(object, struct) && this.isObjects(object, struct)
+        && (this.isntEmpty(object) && this.isntEmpty(struct))){
+        for(let [key, value] of Object.entries(struct)){
+            if(!object.hasOwnProperty(key) || this.typeOf(object[key]) !== value){
+                response = false;
+            }
+        }
+        for(let key of Object.keys(object)){
+            if(!struct.hasOwnProperty(key)){
+                response = false;
+            }
+        }
+    } else {
+        response = false;
+    }
+    return response;
 };
 
 Typo.prototype._isMarriage = function (array, fnChecker){
