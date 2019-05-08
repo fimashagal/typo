@@ -89,16 +89,6 @@ Typo.prototype.isIntegers = function (...objects) {
     return objects.length ? this._isMarriage(objects, object => this.isInteger(object)) : false;
 };
 
-Typo.prototype.isHEX = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
-    object = object.replace(/[#]|[0x]/g, '');
-    let condition = parseInt(object, 16).toString(16) === object;
-    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
-};
-
-Typo.prototype.isHEXs = function (...objects) {
-    return objects.length ? this._isMarriage(objects, object => this.isHEX(object)) : false;
-};
-
 Typo.prototype.isElement = function(object = null, fnTrue = null, fnFalse = null, fnAfter = null){
     let condition;
     try {
@@ -167,23 +157,6 @@ Typo.prototype.isURL = function (object = null, fnTrue = null, fnFalse = null, f
 
 Typo.prototype.isURLs = function (...objects) {
     return objects.length ? this._isMarriage(objects, object => this.isURL(object)) : false;
-};
-
-Typo.prototype.isTouch = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
-    if(this.isDef(window)) ctx = window;
-    if(this.isntDef(ctx)) return false;
-    let condition = 'ontouchstart' in ctx || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
-};
-
-Typo.prototype.isFacebookBrowser = function(ctx = null, fnTrue = null, fnFalse = null, fnAfter = null){
-    if(this.isDef(navigator)) ctx = navigator;
-    if(this.isntDef(ctx)) return false;
-    let userAgent = navigator.userAgent
-        || navigator.vendor
-        || window.opera,
-        condition = /FBAN|FBAV/.test(userAgent);
-    return this._pipe({ condition, fnTrue, fnFalse, fnAfter });
 };
 
 Typo.prototype.isTypeChain = function(collection = [], typeChain = [], fnTrue = null, fnFalse = null, fnAfter = null){

@@ -125,21 +125,6 @@ Typo.isFloat(1); // false
 Typo.isFloat(1.1); // true
 ```
 
-### isHEX
-
-Method **isHEX** for detect string with heximal number
-
-```javascript
-Typo.isHEX("ff0000"); // true
-
-Typo.isHEX("#ff0000"); // true
-
-Typo.isHEX("0xff0000"); // true
-
-Typo.isHEX("ff00zy"); // false
-
-Typo.isHEX("@ff0000"); // false
-```
 
 ### isElement
 
@@ -205,22 +190,6 @@ Method **isURL** for detect http or https links.
 Typo.isURL("https://google.com"); // true
 
 Typo.isURL("ht1ps://go0g1e.com"); // false
-```
-
-### isTouch
-
-Method **isTouch** for detect touch device
-
-```javascript
-Typo.isTouch();
-```
-
-### isFacebookBrowser
-
-Method **isFacebookBrowser** for detect Facebook in-app browser
-
-```javascript
-Typo.isFacebookBrowser();
 ```
 
 ### isTypeChain
